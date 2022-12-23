@@ -5,22 +5,43 @@ import java.util.Scanner;
 public class Grade {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
+		int score = 0;
+		int tenDigit = 0;
+		int oneDigit = 0;
+		String grade = "";   //변수는 한군데에 모아두면 업무에 도움이된다.
+		
 		System.out.printf("점수: ");
-		int score = sc.nextInt();
-		char grade = 0;
+		score = sc.nextInt();
 		
-		String a = "";
-		if(score>=90 && score<=100) a = "A";
-		else if (score >=80 && score<=89) a ="B";
-		else a = "C";
+		tenDigit = score / 10;
+		oneDigit = score % 10;
 		
-		if(score >= 98 && score<=100) a = a+"+";
-		else if(score >=90 && score<=93) a = a+"-";
+		if(tenDigit >= 9) grade = "A";
+		else if(tenDigit >=8) grade = "B";
+		else grade = "C";
 		
-		else if(score >=88 && score<=89) a = a+"+";
-		else if(score >=80 && score<=83) a =a+"-";	
-					
-		System.out.println(a);		
+		if(score >= 80) {
+			if(oneDigit >=8 || tenDigit ==10) grade += "+";
+			else if (0 <= oneDigit && oneDigit <4) grade += "-";
+		}
+		System.out.println(grade);
+//		Scanner sc = new Scanner(System.in);
+//		System.out.printf("점수: ");
+//		int score = sc.nextInt();
+//		char grade = 0;
+//		
+//		String a = "";
+//		if(score>=90 && score<=100) a = "A";
+//		else if (score >=80 && score<=89) a ="B";
+//		else a = "C";
+//		
+//		if(score >= 98 && score<=100) a = a+"+";
+//		else if(score >=90 && score<=93) a = a+"-";
+//		
+//		else if(score >=88 && score<=89) a = a+"+";
+//		else if(score >=80 && score<=83) a =a+"-";	
+//					
+//		System.out.println(a);
 	}
 }
 /*
