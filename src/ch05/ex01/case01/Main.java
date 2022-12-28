@@ -21,6 +21,6 @@ public class Main {
 		System.out.printf("%d시 %d분 %d초\n", time2.hour, time2.minute, time.second);
 		
 		System.out.println(time);
-		System.out.println(time2.toString());
+		System.out.println(time2.toString()); //toString 은 객체의 정보를 리턴하는 역할을 한다.
 	}
 }

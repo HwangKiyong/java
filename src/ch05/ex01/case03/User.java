@@ -1,10 +1,10 @@
 package ch05.ex01.case03;
 
 public class User {
-	private String userName;
+	private String userName;  // encapsulation 캡슐안에 있는것들끼리 대화하는것.
 	private int age;
 				
-	public void setUserName(String userName)/*메서드 선언문*/{  //setter
+	public void setUserName(User this, String userName)/*메서드 선언문*/{  //setter
 		this.userName = userName;
 	} 	//this 변수의 타입은 User다
 			
@@ -16,7 +16,7 @@ public class User {
 		return this.userName;
 	}
 	
-	public int getAge() {
+	public int getAge(User this) { //User this가 생략된거다.
 		return this.age;
 	}	// accessor 접속자
 }
