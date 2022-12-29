@@ -12,7 +12,7 @@ public class C04String {
 //		s = "hello";
 //		System.out.printf("%c\n" , s.charAt(1));
 //		
-		int i = "apple".codePointAt(0);
+		int i = "a".codePointAt(0);
 		//codePointAt 은 해당 인덱스의 유니코드이다.
 		i = "A".hashCode();
 		//hashCode 도 해당 인덱스의 유니코드이다.

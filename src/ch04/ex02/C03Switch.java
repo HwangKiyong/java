@@ -18,3 +18,20 @@ public class C03Switch {
 		System.out.println(dayName);
 	}
 }
+
+
+/*
+과제: 앱과 가위바위보를 하라. 게임 결과를 출력하라. 결과는
+You win.
+You lose.
+Fair.
+중 하나이다.
+--
+
+1. 가위, 2.바위, 3.보
+> 1
+You: 가위
+Me: 보
+
+You win.
+*/

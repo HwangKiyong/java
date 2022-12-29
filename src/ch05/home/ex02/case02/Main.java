@@ -1,4 +1,4 @@
-package ch05.ex02.home;
+package ch05.home.ex02.case02;
 
 import java.util.Scanner;
 
