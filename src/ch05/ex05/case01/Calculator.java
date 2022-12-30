@@ -7,7 +7,7 @@ public class Calculator {
 	/*
 	public int add(int x ,int y) {
 		return x + y;
-	} add가 중복되서 실행이 안된다.
+	} add가 중복되서 실행이 안된다. 데이터 타입이 중요하다.
 	*/
 	
 	public int add(int a , int b ,int c) {
