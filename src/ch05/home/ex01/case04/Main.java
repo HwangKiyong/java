@@ -24,7 +24,7 @@ public class Main {
 			isGood = false;
 			System.out.print("나이: ");
 			tmp = sc.nextLine();
-			isGood = tmp.matches("[0-9]+");
+			isGood = tmp.matches("[0-9-0-9]+");
 			if(isGood) age = Integer.parseInt(tmp);
 			else System.out.println("ERROR] 나이를 입력하세요.");
 		} while(!isGood);
