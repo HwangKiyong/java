@@ -14,22 +14,31 @@ public class Console {
 	}
 	
 	public static String inStr(String msg) {
-		Console.inMsg(msg);
-		String msg1 = "";
+		String input = "";
 		boolean isGood = false;
+		
 		do {
-			msg1 = sc.nextLine();
-			isGood = msg.matches("[a-zA-Z가-힣]+");
-			if(isGood) System.out.println();
-			else System.out.println("ERROR] 문자가 아닙니다.");
-		}while(!isGood);
-		return sc.nextLine().trim();
+			Console.inMsg(msg);
+			input = sc.nextLine();
+			isGood = input.matches("[a-zA-z가-힣]+");
+			if(!isGood) Console.err("문자가 아닙니다.");
+		} while(!isGood);
+		
+		return input;
 	}
 	//문자  입력
 	public static int inNum(String msg) {
-		Console.inMsg(msg);
-		int num = sc.nextInt(); sc.nextLine();
-		return num;
+		String input = "";
+		boolean isGood = false;
+		
+		do { 
+			Console.inMsg(msg);
+			input = sc.nextLine();
+			isGood = input.matches("^[1-9][0-9]*");
+			if(!isGood) Console.err("자연수가 아닙니다.");
+		}while(!isGood);
+		
+		return Integer.parseInt(input);
 	}
 	//숫자  입력
 	public static void info(String msg) {
