@@ -9,6 +9,6 @@ public class Friend {
 		//parent.getRegNum(); private이기 때문에 사용할수 없다.
 		parent.getParentName();
 		//parent.getMoney();
-		//parent.addMoney(1000); 같은 packager가 아니기 때문에 사용할 수 없다.		
+		//parent.addMoney(1000); 같은 package가 아니기 때문에 사용할 수 없다.		
 	}
 }
