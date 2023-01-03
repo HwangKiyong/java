@@ -10,6 +10,6 @@ public class Shoes extends Product{
 	
 	@Override
 	public int getPrice() {		
-		return this.price;
+		return super.getPrice();
 	}
 }
