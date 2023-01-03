@@ -2,6 +2,8 @@ package ch05.home.ex06.case02;
 
 import java.util.Scanner;
 
+
+
 public class Console {
 	private static Scanner sc;
 	
@@ -50,4 +52,6 @@ public class Console {
 	}
 	//에러메세지 출력
 	//static 을 준 이유는 누가 했는지가 중요하지 않아서이다.	
+
+
 }	

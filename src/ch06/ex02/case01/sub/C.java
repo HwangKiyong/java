@@ -17,3 +17,7 @@ public class C extends A {
 		this.m4();	//public 이기 때문에 사용이 가능하다.
 	}
 }
+
+/*protected 는 자식과 package안에서만 볼 수 있다.
+public은 제한이 없다.
+*/
