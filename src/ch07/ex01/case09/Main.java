@@ -9,5 +9,5 @@ public class Main {
 		
 		shooter.setGun(new Rifle());
 		shooter.fire();
-	}
+	}	//확장성이 생겼다.
 }
