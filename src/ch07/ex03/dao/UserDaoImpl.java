@@ -1,6 +1,6 @@
 package ch07.ex03.dao;
 
-import ch07.ex02.domain.User;
+import ch07.ex03.domain.User;
 
 public class UserDaoImpl implements UserDao{
 	private User user;

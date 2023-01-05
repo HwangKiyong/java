@@ -1,6 +1,6 @@
 package ch07.ex03.sevice;
 
-import ch07.ex02.domain.User;
+import ch07.ex03.domain.User;
 
 public interface UserService {
 	public User getUser();

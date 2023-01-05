@@ -3,7 +3,7 @@ package ch07.ex03.sevice;
 import ch07.ex03.dao.UserDao;
 import ch07.ex03.domain.User;
 
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService{
 	private UserDao userDao;
 	
 	public UserServiceImpl(UserDao userDao) {
