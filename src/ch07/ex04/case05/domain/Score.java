@@ -30,6 +30,14 @@ public class Score {
 	public int getMath() {
 		return math;
 	}
+	
+	public int getSum() {
+		return sum;
+	}
+
+	public int getAvg() {
+		return avg;
+	}
 
 	public void setSum(int sum) {
 		this.sum = sum;
@@ -37,5 +45,5 @@ public class Score {
 
 	public void setAvg(int avg) {
 		this.avg = avg;
-	}
+	}	
 }
