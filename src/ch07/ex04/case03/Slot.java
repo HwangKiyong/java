@@ -17,7 +17,7 @@ public class Slot {
 		do {
 			i = (int)(Math.random() * 45);
 			ball = balls[i];
-			balls[i] = null;
+			balls[i] = null; //뽑아내는것이다.
 		} while(ball == null); //다시 반복되는것을 막아준다.
 		
 		return ball;		
