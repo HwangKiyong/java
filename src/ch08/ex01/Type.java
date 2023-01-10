@@ -47,7 +47,7 @@ public @interface Type {
 @Target({ElementType.TYPE, ElementType.FIELD})
 @interface Universal {
 	
-}
+}	//{} 을 사용하면 n개의 Target 을 잡아 줄 수 있다.
 
 //annotation 을 만드는 문법은 @을 붙이면 된다.
 //field 의 동의어 member variable

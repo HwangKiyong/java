@@ -15,7 +15,7 @@ public enum Level {
 		return this.value;
 	}
 	
-	public Level next() {
+	public Level next() { //record를 흉내낸것
 		return this.next;
 	}
 }

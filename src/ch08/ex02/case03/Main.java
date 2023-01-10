@@ -6,7 +6,7 @@ public class Main {
 		int ordinal = Way.LEFT.ordinal();
 		name = Way.RIGHT.name();
 		ordinal = Way.RIGHT.ordinal();
-		System.out.printf("%s %d\n", name, ordinal); //RIGHT 1
+		System.out.printf("%s %d\n", name, ordinal); //LEFT 1
 		
 		Way[] ways = Way.values();
 		for(Way way: ways) System.out.print(way + " "); // LEFT RIGHT

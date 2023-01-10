@@ -6,3 +6,4 @@ public class Building {
 		return "빌딩";
 	}
 }
+
