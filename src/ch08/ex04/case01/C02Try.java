@@ -6,7 +6,7 @@ public class C02Try {
 		
 		try {
 			int result = arr[10];
-		} catch (ArrayIndexOutOfBoundsException e) {
+		} catch (ArrayIndexOutOfBoundsException e) { //e 는 event의 앞글자다.
 			System.out.println("error.");
 		}
 			
