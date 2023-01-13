@@ -7,32 +7,24 @@ public class Laborer {
 	private static int lastLaborerId = 1;
 	private final int laborerId;
 	private String laborerName;
-	private LocalDate regDate;
+	private LocalDate hireDate;
 	
-	public Laborer(String laborerName, LocalDate regDate) {
+	public Laborer(String laborerName, LocalDate hireDate) {
 		this.laborerId = lastLaborerId++;
 		this.laborerName = laborerName;
-		this.regDate = regDate;
+		this.hireDate = hireDate;
 	}
-
-	public static int getLastLaborerId() {
-		return lastLaborerId;
-	}
-
+	
 	public int getLaborerId() {
 		return laborerId;
 	}
-
+	
 	public String getLaborerName() {
 		return laborerName;
 	}
 
-	public LocalDate getRegDate() {
-		return regDate;
-	}
-
-	public static void setLastLaborerId(int lastLaborerId) {
-		Laborer.lastLaborerId = lastLaborerId;
+	public LocalDate getHireDate() {
+		return hireDate;
 	}
 
 	public void setLaborerName(String laborerName) {
@@ -40,15 +32,15 @@ public class Laborer {
 	}
 
 	public void setHireDate(LocalDate hireDate) {
-		this.regDate = hireDate;
+		this.hireDate = hireDate;
 	}
-	
+
 	@Override
 	public String toString() {
-		return String.format("%5d %5s %s", laborerId, laborerName, regDate);		
+		return String.format("%5d %5s %s", laborerId, laborerName, hireDate);
 	}
 	
-	public static int getLaborerInexFromId(List<Laborer> laborers, int laborerId) {
+	public static int getLaborerIndexFromId(List<Laborer> laborers, int laborerId) {
 		for(int i = 0; i < laborers.size(); i++)
 			if(laborerId == laborers.get(i).getLaborerId()) {
 				return i;

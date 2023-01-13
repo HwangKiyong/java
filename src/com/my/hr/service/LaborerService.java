@@ -8,6 +8,6 @@ import com.my.hr.domain.Laborer;
 public interface LaborerService {
 	public List<Laborer> getLaborer();
 	public void addLaborer(Laborer laborer);
-	public void fixLaborer(String laborerName, int laborerId, LocalDate regDate);
+	public void fixLaborer(int laborerId, String laborerName, LocalDate hireDate);
 	public void delLaborer(int laborerId);
 }
