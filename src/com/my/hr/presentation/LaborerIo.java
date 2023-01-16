@@ -4,111 +4,94 @@ import java.time.LocalDate;
 import java.util.List;
 
 import com.my.hr.domain.Laborer;
+import com.my.hr.domain.NoneException;
 import com.my.hr.service.LaborerService;
 
 public class LaborerIo {
 	private LaborerService laborerService;
+	private String menu;
 	
 	public LaborerIo(LaborerService laborerService) {
 		this.laborerService = laborerService;
+		this.menu = Job.labels();
 	}
 	
 	public void play() {
-		int choice = 0;
+		Job job = null;
 		
-		do {
-			Console.info("1.목록 2.추가 3.수정 4.삭제 0.종료");
-			choice = Console.inNum("메뉴를 선택하세요.");
-			switch(choice) {
-			case Code.LIST -> listLaborer();
-			case Code.ADD -> addLaborer();
-			case Code.FIX -> fixLaborer();
-			case Code.DEL -> delLaborer();
-			case Code.EXIT -> {break;}
-			default -> Console.err("메뉴가 아닙니다.");			
+		while((job = choose(menu)) != Job.EXIT) {
+			switch(job) {
+			case LIST -> listLaborers();
+			case ADD -> addLaborer();
+			case FIX -> fixLaborer();
+			case DEL -> delLaborer();
 			}
-		}while(choice != Code.EXIT);
-	}
-
-	private void delLaborer() {
-		List<Laborer> laborers = laborerService.getLaborer();
-		int laborerId = 0;
-		int index = 0;
-		boolean isGood = false;
-		
-		do {
-			laborerId = Console.inNum("삭제할 노동자의 ID를 입력하세요.");
-			if(laborerId == 0) {
-				Console.info("취소되었습니다.");
-				return;
-			}
-			index = Laborer.getLaborerIndexFromId(laborers, laborerId);
-			if(index != -1) isGood = true;
-			if(!isGood)
-				Console.err("ID가 적절하지 않습니다.");
-		} while(!isGood);
-		
-		laborerService.delLaborer(laborerId);
-	}
-
-	private void fixLaborer() {
-		List<Laborer> laborers = laborerService.getLaborer();
-		int laborerId = 0;
-		int index = 0;
-		String laborerName = "";
-		LocalDate hireDate = null;
-		boolean isGood = false;
-		
-		do {
-			laborerId = Console.inNum("수정할 노동자의 ID를 입력하세요.");
-			if(laborerId == 0) {
-				Console.info("취소되었습니다.");
-				return;
-			}
-			index = Laborer.getLaborerIndexFromId(laborers, laborerId);
-			if(index != -1) isGood = true;
-			if(!isGood)
-				Console.err("ID가 적절하지 않습니다.");
-		} while(!isGood);
-		
-		laborerName = Console.inStr("새 노동자명을 입력하세요.");
-		hireDate = Console.inDate("입사일을 입력하세요.");
-		
-		laborerService.fixLaborer(laborerId, laborerName, hireDate);
-	}
-
-	private void addLaborer() {
-		String laborerName = "";
-		LocalDate hireDate = null;
-		boolean isGood =false;		
-		
-		do {
-			laborerName = Console.inStr("노동자명을 입력하세요.");
-			if(laborerName.equals("0")) {
-				Console.info("취소되었습니다.");
-				return;
-			}
-			isGood = laborerName.length() <= 5;
-			if(!isGood)
-				Console.err("5자 이하로 입력하세요.");
-		} while(!isGood);
-		
-		hireDate = Console.inDate("입사일을 입력하세요.");
-		laborerService.addLaborer(new  Laborer(laborerName,  hireDate));
-	}
-
-	private void listLaborer() {
-		List<Laborer> laborers = laborerService.getLaborer();
-		if(laborers.size() == 0) Console.info("노동자가 없습니다.");
-		else {
-			Console.info("노동자ID 노동자명 입사일");
-			for(Laborer laborer: laborers)
-				System.out.printf("%8d %5s %s\n",
-						laborer.getLaborerId(),
-						laborer.getLaborerName(),
-						laborer.getHireDate());
 		}
 	}
-
-
+	
+	private Job choose(String menu) {
+		int choice = 0;
+		boolean isGood = false;
+		
+		do {
+			choice = Console.inNum(menu);
+			if(choice < 0 || choice > Job.length() - 1)
+				Console.err("메뉴 번호를 입력하세요.");
+			else isGood = true;
+		} while(!isGood);
+		
+		return Job.valueOf(choice);
+	} //창조 할줄 알아야함.
+	
+	private void listLaborers() {
+		List<Laborer> laborers = laborerService.getLaborers();
+		
+		System.out.println("ID 이름      입사일");
+		System.out.println("-------------------");
+		
+		if(laborers.size() > 0 ) laborers.forEach(Console::info); //람다이다.
+		else Console.info("노동자가 없습니다.");
+	}
+	
+	private void addLaborer() {
+		String laborerName = Console.inStr("노동자명을 입력하세요.", 5);
+		
+		if(!laborerName.equals("0")) {
+			LocalDate hireDate = Console.inDate("입사일을 입력하세요.");
+			laborerService.addLaborer(laborerName, hireDate);
+			Console.info("노동자를 추가했습니다.");					
+		} else Console.info("추가 취소합니다.");
+	}
+	
+	private void fixLaborer() {
+		int laborerId = Console.inNum("노동자ID를 입력하세요.");
+		
+		if(laborerId != 0) {
+			String laborerName = Console.inStr("노동자명을 입력하세요.", 5);
+			LocalDate hireDate = Console.inDate("입사일을 입력하세요.");
+			
+			try {
+				laborerService.fixLaborer(new Laborer(laborerId, laborerName, hireDate));
+				Console.info("노동자를 수정했습니다.");
+			} catch(NoneException e) {
+				Console.err(e.getMessage());
+			}
+		} else Console.info("수정 취소합니다.");
+	}
+	
+	private void delLaborer() {
+		int laborerId = Console.inNum("노동자ID를 입력하세요.");
+		
+		if(laborerId != 0) {
+			try {
+				laborerService.delLaborer(laborerId);
+				Console.info("노동자를 삭제했습니다.");
+			} catch(NoneException e) {
+				Console.err(e.getMessage());
+			}
+		} else Console.info("삭제 취소합니다.");
+	}
 }
+
+
+//presentation 에서는 유저를 신경써야한다.
