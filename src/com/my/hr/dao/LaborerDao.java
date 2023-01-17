@@ -11,3 +11,4 @@ public interface LaborerDao {	//CRUD를 만든다.
 	void updateLaborer(Laborer laborer); //update
 	void deleteLaborer(int laborerId);//delete
 }
+ 
