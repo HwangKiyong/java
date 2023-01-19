@@ -7,15 +7,15 @@ import com.my.hr.dao.LaborerDao;
 import com.my.hr.domain.Laborer;
 import com.my.hr.domain.NoneException;
 
-public class LaborerServiceImpl implements LaborerService {
-	private LaborerDao laborerDao; //has a관계이다.
+public class LaborerServiceImpl implements LaborerService{
+	private LaborerDao laborerDao;	//has a 관계이다.
 	
 	public LaborerServiceImpl(LaborerDao laborerDao) {
 		this.laborerDao = laborerDao;
 	}
 	
 	@Override
-	public List<Laborer> getLaborers() {
+	public List<Laborer> getLaborers(){
 		return laborerDao.selectLaborers();
 	}
 	
@@ -25,12 +25,12 @@ public class LaborerServiceImpl implements LaborerService {
 	}
 	
 	@Override
-	public void fixLaborer(Laborer laborer) throws NoneException {
+	public void fixLaborer(Laborer laborer) throws NoneException{
 		laborerDao.updateLaborer(laborer);
 	}
 	
 	@Override
-	public void delLaborer(int laborerId) throws NoneException {
+	public void delLaborer(int laborerId) throws NoneException{
 		laborerDao.deleteLaborer(laborerId);
 	}
 }

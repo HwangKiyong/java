@@ -3,6 +3,7 @@ package com.my.hr.presentation;
 public enum Job {
 	EXIT("종료"), LIST("목록"), ADD("추가"), FIX("수정"), DEL("삭제");
 	
+	
 	private String label;
 	
 	private Job(String label) {
@@ -13,7 +14,7 @@ public enum Job {
 		return values().length;
 	}
 	
-	public static Job valueOf(int ordinal) {
+	public static Job valueof(int ordinal) {
 		return values()[ordinal];
 	}
 	

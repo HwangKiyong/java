@@ -19,7 +19,7 @@ public class LaborerIo {
 	public void play() {
 		Job job = null;
 		
-		while((job = choose(menu)) != Job.EXIT) {
+		while((job = choose(menu)) != job.EXIT) {
 			switch(job) {
 			case LIST -> listLaborers();
 			case ADD -> addLaborer();
@@ -40,26 +40,26 @@ public class LaborerIo {
 			else isGood = true;
 		} while(!isGood);
 		
-		return Job.valueOf(choice);
-	} //창조 할줄 알아야함.
+		return Job.valueof(choice);
+	}
 	
 	private void listLaborers() {
 		List<Laborer> laborers = laborerService.getLaborers();
 		
-		System.out.println("ID 이름      입사일");
-		System.out.println("-------------------");
+		System.out.println("ID 이름    입사일");
+		System.out.println("------------------");
 		
-		if(laborers.size() > 0 ) laborers.forEach(Console::info); //람다이다.
+		if(laborers.size() > 0) laborers.forEach(Console::info);
 		else Console.info("노동자가 없습니다.");
 	}
 	
 	private void addLaborer() {
-		String laborerName = Console.inStr("노동자명을 입력하세요.", 5);
+		String laborerName = Console.inStr("노동자명을 입력하세요", 5);
 		
 		if(!laborerName.equals("0")) {
 			LocalDate hireDate = Console.inDate("입사일을 입력하세요.");
 			laborerService.addLaborer(laborerName, hireDate);
-			Console.info("노동자를 추가했습니다.");					
+			Console.info("노동자를 추가했습니다.");
 		} else Console.info("추가 취소합니다.");
 	}
 	
@@ -76,7 +76,7 @@ public class LaborerIo {
 			} catch(NoneException e) {
 				Console.err(e.getMessage());
 			}
-		} else Console.info("수정 취소합니다.");
+		}else Console.info("수정 취소합니다.");
 	}
 	
 	private void delLaborer() {
@@ -89,9 +89,11 @@ public class LaborerIo {
 			} catch(NoneException e) {
 				Console.err(e.getMessage());
 			}
-		} else Console.info("삭제 취소합니다.");
+			
+		}else Console.info("삭제 취소합니다.");
 	}
 }
+
 
 
 //presentation 에서는 유저를 신경써야한다.

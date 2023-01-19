@@ -6,7 +6,7 @@ import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
 public interface Console {
-	Scanner sc =new Scanner(System.in);
+	Scanner sc = new Scanner(System.in);
 	
 	static void info(Object obj) {
 		System.out.println(obj);
@@ -27,7 +27,7 @@ public interface Console {
 		do {
 			Console.inMsg(msg);
 			input = sc.nextLine();
-			isGood = input.matches("[a-zA-Z가-힣0-9]{1, " + len + "}"); //한글자 이하 오류를 확인
+			isGood = input.matches("[a-zA-Z가-힣0-9]{1," + len + "}");
 			if(!isGood) Console.err(len + "자 이하의 문자가 아닙니다.");
 		} while(!isGood);
 		
@@ -42,7 +42,7 @@ public interface Console {
 			Console.inMsg(msg);
 			input = sc.nextLine();
 			isGood = input.matches("[0-9]+");
-			if(!isGood) Console.err("0이상의 정수가 아닙니다.");
+			if(!isGood) Console.err("0 이상의 정수가 아닙니다.");
 		} while(!isGood);
 		
 		return Integer.parseInt(input);
@@ -58,7 +58,7 @@ public interface Console {
 			
 			if(input.length() > 0) {
 				try {
-					date = LocalDate.parse(input, DateTimeFormatter.ISO_DATE);
+					date = LocalDate.parse(input, DateTimeFormatter.ISO_DATE);//실제 날짜가 아닌것도 검사해줌
 				} catch(DateTimeParseException e) {}
 			}
 			

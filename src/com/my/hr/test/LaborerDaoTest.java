@@ -18,9 +18,10 @@ public class LaborerDaoTest {
 		System.out.println(laborerDao.selectLaborers());
 		
 		laborerDao.insertLaborer("한아름", LocalDate.now());
+		
 		System.out.println(laborerDao.selectLaborers());
 		
-		laborerDao.updateLaborer(new Laborer(11, "소리섭", LocalDate.of(2025, 5 , 5)));
+		laborerDao.updateLaborer(new Laborer(11, "소리섭", LocalDate.of(2025, 5, 5)));
 		System.out.println(laborerDao.selectLaborers());
 		
 		laborerDao.deleteLaborer(11);
@@ -36,7 +37,8 @@ public class LaborerDaoTest {
 			laborerDao.deleteLaborer(12);
 		} catch(NoneException e) {
 			e.printStackTrace();
-		} //예외처리
+		}	//예외처리
 	}
 }
+
 //데이터의 참과 거짓을 확인하는것은 중요하다!!!

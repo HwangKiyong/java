@@ -8,9 +8,9 @@ import java.util.stream.Collectors;
 import com.my.hr.domain.Laborer;
 import com.my.hr.domain.NoneException;
 
-public class LaborerDaoImpl implements LaborerDao {
+public class LaborerDaoImpl implements LaborerDao{
 	private List<Laborer> laborers;
-	private int laborerIdSeq; // 시퀀스를 사용한다.
+	private int laborerIdSeq;
 	
 	public LaborerDaoImpl(List<Laborer> laborers) {
 		this.laborers = laborers;
@@ -18,7 +18,7 @@ public class LaborerDaoImpl implements LaborerDao {
 	}
 	
 	@Override
-	public List<Laborer> selectLaborers() {
+	public List<Laborer> selectLaborers(){
 		return laborers;
 	}
 	
@@ -41,17 +41,19 @@ public class LaborerDaoImpl implements LaborerDao {
 	@Override
 	public void updateLaborer(Laborer laborer) {
 		this.deleteLaborer(laborer.laborerId());
-		laborers.add(laborer); //웹앱에서는 이대로여도 상관없다.(기술적인 코드) 나쁜코드
-		laborers.sort(Comparator.comparing(Laborer::laborerId)); //람다이다. laborerId가 주제이다. 오름차순
+		laborers.add(laborer);
+		laborers.sort(Comparator.comparing(Laborer::laborerId));//laborerId기준으로 오름차순
 	}
 	
 	@Override
-	public void deleteLaborer(int laborerId) throws NoneException {
+	public void deleteLaborer(int laborerId) throws NoneException{
 		Laborer laborer = selectLaborer(laborerId);
 		if(laborer != null) laborers.remove(laborer);
 		else throw new NoneException("해당 노동자가 없습니다.");
 	}
+	
 }
+
 
 
 //API문서 볼것.
