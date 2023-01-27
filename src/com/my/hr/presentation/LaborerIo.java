@@ -94,6 +94,4 @@ public class LaborerIo {
 	}
 }
 
-
-
 //presentation 에서는 유저를 신경써야한다.
